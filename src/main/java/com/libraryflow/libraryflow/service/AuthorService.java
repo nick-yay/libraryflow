@@ -23,6 +23,35 @@ public class AuthorService {
         return toDto(author);
     }
 
+    public List<AuthorDTO> getAllAuthors() {
+        List<Author> authors = repo.findAll();
+        return authors.stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public AuthorDTO getAuthor(Long id) {
+        Author author = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+        return toDto(author);
+    }
+
+    public AuthorDTO update(Long id, AuthorDTO dto) {
+        Author author = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+        author.setName(dto.getName());
+        author.setNationality(dto.getNationality());
+        author.setBiography(dto.getBiography());
+        author = repo.save(author);
+        return toDto(author);
+    }
+
+    public void delete(Long id) {
+        Author author = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+        repo.delete(author);
+    }
+    
     private AuthorDTO toDto(Author author) {
         AuthorDTO dto = new AuthorDTO(
             author.getName(),
@@ -36,4 +65,4 @@ public class AuthorService {
         dto.setBooks(bookTitles);
         return dto;
     }
-}
+    }

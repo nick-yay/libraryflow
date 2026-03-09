@@ -28,12 +28,26 @@ public class Author {
                fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Book> books=new ArrayList<>();
     
+    public Author() {
+    }
     public Author(Long id, String name, String nationality, String biography) {
         this.id = id;
         this.name = name;
         this.nationality = nationality;
         this.biography = biography;
 
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
     }
 
     public void setBooks(List<Book> books) {
