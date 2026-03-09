@@ -2,7 +2,6 @@ package com.libraryflow.libraryflow.DTO;
 
 import java.util.List;
 
-import jakarta.validation.constraints.Max;
 import lombok.Getter;
 
 @Getter
@@ -11,7 +10,6 @@ public class AuthorDTO {
     private Long id;
     private String name;
     private String nationality;
-    @Max(500)
     private String biography;
     private List<String> books;
 
