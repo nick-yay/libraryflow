@@ -25,7 +25,7 @@ GET   /books/1 → livro específico
 PUT   /books/1 → atualiza
 DELETE /books/1 → deleta
 Teste rápido (Postman)
-1. Cria autor:
+1. Criar autor:
 
 json
 POST /authors
@@ -36,7 +36,7 @@ POST /authors
 }
 (Pega o ID=129)
 
-2. Cria livro:
+2. Criar livro:
 
 json
 POST /books
@@ -65,25 +65,22 @@ Maven
 Lombok
 
 Estrutura
-text
 src/main/java/com/libraryflow/libraryflow/
 ├── controller/
 ├── service/
 ├── model/     ← Author.java, Book.java
 ├── repository/
 └── DTO/
+
 Funcionalidades
+
 CRUD completo
-
 Relacionamento Author ↔ Books
-
 Cascade delete
-
 DTOs
-
 Validação
 
-Autor
+Autor:
 Nicolas Ludugerio - São Paulo/SP
 nicolasludugerio@gmail.com
 
