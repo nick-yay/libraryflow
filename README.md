@@ -1,7 +1,7 @@
-LibraryFlow - API de Biblioteca
-API REST simples para gerenciar livros e autores com Spring Boot + H2.
+# LibraryFlow - API de Biblioteca
+### API REST simples para gerenciar livros e autores com Spring Boot + H2.
 
-Como rodar
+## Como rodar
 
 bash
 mvn spring-boot:run
@@ -10,9 +10,9 @@ Roda em http://localhost:8080
 H2 Console: http://localhost:8080/h2-console
 (JDBC: jdbc:h2:file:C:/temp/libraryflow, user: sa)
 
-Endpoints
+## Endpoints
 
-Autores
+### Autores
 text
 POST  /authors    → cria autor
 GET   /authors    → lista todos
@@ -20,16 +20,16 @@ GET   /authors/ID → autor + livros dele
 PUT   /authors/ID → atualiza
 DELETE /authors/ID → deleta (com cascade)
 
-Livros
+### Livros
 POST  /books → criar livro
 GET   /books → listar todos
 GET   /books/1 → livro específico
 PUT   /books/1 → atualizar
 DELETE /books/1 → deletar
 
-Teste rápido (Postman)
+## Teste rápido (Postman)
 
-1. Criar autor:
+### 1. Criar autor:
 
 json
 POST /authors
@@ -40,7 +40,7 @@ POST /authors
 }
 (Pegar o Id)
 
-2. Criar livro:
+### 2. Criar livro:
 
 json
 POST /books
@@ -50,21 +50,21 @@ POST /books
   "publicationYear": 1997,
   "authorId": Id
 }
-3. Testa:
+### 3. Testar:
 
 GET /books → mostra os livros
 GET /authors/Id → mostra Rowling com seus livros
 
-Stack
+### Stack
 
-Spring Boot 3.0.3
-Java 21
-H2 Database
-JPA/Hibernate
-Maven
-Lombok
+- Spring Boot 3.0.3
+- Java 21
+- H2 Database
+- JPA/Hibernate
+- Maven
+- Lombok
 
-Estrutura
+## Estrutura
 
 src/main/java/com/libraryflow/libraryflow/
 ├── controller/
@@ -73,15 +73,15 @@ src/main/java/com/libraryflow/libraryflow/
 ├── repository/
 └── DTO/
 
-Funcionalidades
+## Funcionalidades
 
-CRUD completo
-Relacionamento Author ↔ Books
-Cascade delete
-DTOs
-Validação
+- CRUD completo
+- Relacionamento Author ↔ Books
+- Cascade delete
+- DTOs
+- Validação
 
-Autor:
+## Autor:
 Nicolas Ludugerio - São Paulo/SP
 nicolasludugerio@gmail.com
 
