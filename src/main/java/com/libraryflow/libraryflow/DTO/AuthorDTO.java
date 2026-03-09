@@ -2,9 +2,11 @@ package com.libraryflow.libraryflow.DTO;
 
 import java.util.List;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
+@Data
+@NoArgsConstructor
 public class AuthorDTO {
 
     private Long id;
@@ -17,10 +19,6 @@ public class AuthorDTO {
         this.name = name;
         this.nationality = nationality;
         this.biography = biography;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
     public void setBooks(List<String> books) {
         this.books = books;

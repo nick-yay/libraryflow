@@ -11,9 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+
+@Data
 @Entity
 @Table(name = "authors")
 public class Author {
@@ -26,7 +27,7 @@ public class Author {
     @Column(length = 500)
     private String biography;
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, 
-               fetch = FetchType.LAZY, orphanRemoval = true)
+               fetch = FetchType.EAGER)
     private List<Book> books=new ArrayList<>();
     
     public Author() {
@@ -37,21 +38,5 @@ public class Author {
         this.nationality = nationality;
         this.biography = biography;
 
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public void setBiography(String biography) {
-        this.biography = biography;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
     }
 }

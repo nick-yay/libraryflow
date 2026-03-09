@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.libraryflow.libraryflow.DTO.AuthorDTO;
 import com.libraryflow.libraryflow.model.Author;
+import com.libraryflow.libraryflow.model.Book;
 import com.libraryflow.libraryflow.repository.AuthorRepository;
 import jakarta.transaction.Transactional;
 
@@ -31,10 +32,13 @@ public class AuthorService {
     }
 
     public AuthorDTO getAuthor(Long id) {
-        Author author = repo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
-        return toDto(author);
-    }
+    Author author = repo.findById(id)
+        .orElseThrow(() -> new RuntimeException("Autor não encontrado"));
+    author.getBooks().size();  
+    
+    return toDto(author);
+}
+    
 
     public AuthorDTO update(Long id, AuthorDTO dto) {
         Author author = repo.findById(id)
@@ -53,16 +57,18 @@ public class AuthorService {
     }
     
     private AuthorDTO toDto(Author author) {
-        AuthorDTO dto = new AuthorDTO(
-            author.getName(),
-            author.getNationality(),
-            author.getBiography()
-        );
-        List<String> bookTitles = author.getBooks().stream()
-                .map(book -> book.getTitle())
-                .collect(Collectors.toList());
-        
-        dto.setBooks(bookTitles);
-        return dto;
-    }
+    AuthorDTO dto = new AuthorDTO();
+    dto.setId(author.getId());     
+    
+    dto.setName(author.getName());
+    dto.setNationality(author.getNationality());
+    dto.setBiography(author.getBiography());
+
+    List<String> bookTitles = author.getBooks().stream()
+        .map(Book::getTitle)
+        .collect(Collectors.toList());
+    dto.setBooks(bookTitles);
+    
+    return dto;
+}
     }
