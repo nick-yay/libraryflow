@@ -30,11 +30,4 @@ public class Book {
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
     private Integer publicationYear;
-
-    public Book(String title, String isbn, Author author, Integer publicationYear) {
-        this.title = title;
-        this.isbn = isbn;
-        this.author = author;
-        this.publicationYear = publicationYear;
-    }
 }

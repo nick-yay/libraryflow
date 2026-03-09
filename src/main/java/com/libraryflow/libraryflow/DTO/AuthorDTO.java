@@ -14,13 +14,4 @@ public class AuthorDTO {
     private String nationality;
     private String biography;
     private List<String> books;
-
-    public AuthorDTO(String name, String nationality, String biography) {
-        this.name = name;
-        this.nationality = nationality;
-        this.biography = biography;
-    }
-    public void setBooks(List<String> books) {
-        this.books = books;
-    }
 }

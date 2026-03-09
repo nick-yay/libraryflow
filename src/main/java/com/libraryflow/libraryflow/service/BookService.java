@@ -31,7 +31,11 @@ public class BookService {
                 "Autor não encontrado ID: " + dto.getAuthorId()
             ));
         
-        Book book = new Book(dto.getTitle(), dto.getIsbn(), author, dto.getPublicationYear());
+        Book book = new Book();
+        book.setTitle(dto.getTitle());
+        book.setIsbn(dto.getIsbn());
+        book.setAuthor(author);
+        book.setPublicationYear(dto.getPublicationYear());
         book = repo.save(book);
         return toDto(book);
     }
@@ -56,8 +60,8 @@ public class BookService {
                     HttpStatus.NOT_FOUND,
                     "Autor não encontrado ID: " + dto.getAuthorId()
                 ));
+                
         book.setTitle(dto.getTitle());
-        book.setIsbn(dto.getIsbn());
         book.setPublicationYear(dto.getPublicationYear());
         book.setAuthor(author);
         book = repo.save(book);

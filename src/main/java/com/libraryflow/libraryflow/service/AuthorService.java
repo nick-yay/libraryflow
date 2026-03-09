@@ -19,7 +19,10 @@ public class AuthorService {
     private AuthorRepository repo;
 
     public AuthorDTO createAuthor(AuthorDTO dto) {
-        Author author = new Author(null, dto.getName(), dto.getBiography(), dto.getNationality());
+        Author author = new Author();
+        author.setName(dto.getName());
+        author.setNationality(dto.getNationality());
+        author.setBiography(dto.getBiography());
         author = repo.save(author);
         return toDto(author);
     }
