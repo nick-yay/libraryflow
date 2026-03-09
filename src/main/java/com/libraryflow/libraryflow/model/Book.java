@@ -2,12 +2,16 @@ package com.libraryflow.libraryflow.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "books")
 public class Book {
@@ -15,37 +19,20 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotNull
+    @Column(nullable = false)
     private String title;
 
     @Column(nullable = false, unique = true)
-    @NotNull
     private String isbn;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id", nullable = false)
     private Author author;
     private Integer publicationYear;
-    
-    public Book(Long id, @NotNull String title, @NotNull String isbn, Author author, Integer publicationYear) {
-        this.id = id;
+
+    public Book(String title, String isbn, Author author, Integer publicationYear) {
         this.title = title;
         this.isbn = isbn;
         this.author = author;
         this.publicationYear = publicationYear;
-    }
- 
-
-    public Long getId() {
-        return id;
-    }
-    public String getTitle() {
-        return title;
-    }
-    public String getIsbn() {
-        return isbn;
-    }
-    public Author getAuthor() {
-        return author;
-    }
-    public Integer getPublicationYear() {
-        return publicationYear;
     }
 }
